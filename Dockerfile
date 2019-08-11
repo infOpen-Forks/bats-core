@@ -7,6 +7,9 @@ FROM bash:${bashver}
 RUN apk add --no-cache parallel && \
     mkdir -p ~/.parallel && touch ~/.parallel/will-cite
 
+# Add ncurse to fix missing tput
+RUN apk add --no-cache ncurses
+
 RUN ln -s /opt/bats/bin/bats /usr/sbin/bats
 COPY . /opt/bats/
 
